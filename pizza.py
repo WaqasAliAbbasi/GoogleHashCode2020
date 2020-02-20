@@ -5,7 +5,7 @@ import random
 def parse(inp):
     lines = inp.split('\n')
     R, C, L, H = map(int, lines[0].split())
-    board = [list(map(lambda x: x=='T', line.strip())) for line in lines[1:]]
+    board = [list(map(lambda x: x == 'T', line.strip())) for line in lines[1:]]
     return argparse.Namespace(r=R, c=C, l=L, h=H, board=board)
 
 
@@ -45,7 +45,8 @@ def coords(r):
 def ing(r, ns):
     t = 0
     for x, y in coords(r):
-        if ns.board[x][y]: t+=1
+        if ns.board[x][y]:
+            t += 1
     return t, area(r) - t
 
 
@@ -57,7 +58,8 @@ def solve(seed, inp, log):
         for y1 in range(0, ns.c):
             for dx, dy in dims(ns):
                 x2, y2 = x1 + dx-1, y1 + dy-1
-                if x2 >= ns.r or y2 >= ns.c: continue
+                if x2 >= ns.r or y2 >= ns.c:
+                    continue
                 r = (x1, y1, x2, y2)
                 t, m = ing(r, ns)
                 if min(t, m) >= ns.l:
@@ -69,7 +71,8 @@ def solve(seed, inp, log):
         ok = True
         for x, y in coords(r):
             ok = ok and not used[x][y]
-        if not ok: continue
+        if not ok:
+            continue
         for x, y in coords(r):
             used[x][y] = True
         pick.append(r)

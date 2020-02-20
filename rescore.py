@@ -8,14 +8,18 @@ try:
 except:
     from configparser import ConfigParser
 
+
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('inp', nargs='?')
     parser.add_argument('ans', nargs='?')
     parser.add_argument('-s', action='store_true', help="show")
-    parser.add_argument('--rescore', action='store_true', help="Rescore all ans files in ans/ and copy the best to submission")
-    parser.add_argument('-c', '--config', action='store', default='', help="config file")
-    parser.add_argument('--score', action='store', default='', help="set scoring config, format: key1=value1,key2=value2")
+    parser.add_argument('--rescore', action='store_true',
+                        help="Rescore all ans files in ans/ and copy the best to submission")
+    parser.add_argument('-c', '--config', action='store',
+                        default='', help="config file")
+    parser.add_argument('--score', action='store', default='',
+                        help="set scoring config, format: key1=value1,key2=value2")
     return parser.parse_args()
 
 

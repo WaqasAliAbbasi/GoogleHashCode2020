@@ -56,10 +56,10 @@ def clean_max():
 
 
 def _save_ans(fname, subdir, out):
-        mkdir(subdir)
-        latest = "{}/{}.ans".format(subdir, fname)
-        with open(latest, 'w') as f:
-            f.write(str(out))
+    mkdir(subdir)
+    latest = "{}/{}.ans".format(subdir, fname)
+    with open(latest, 'w') as f:
+        f.write(str(out))
 
 
 def _score(inp, out, sc_fun, ignore=False):
@@ -80,6 +80,7 @@ def _get_best(name):
     except IOError:
         return 0
 
+
 def get_ans_fn(config, inp, log):
     try:
         run_cmd = config.get('solve', 'run')
@@ -87,17 +88,18 @@ def get_ans_fn(config, inp, log):
         run_cmd = None
     if run_cmd == None:
         sol_fn = get_function('solve', config)
+
         def get_ans(seed):
             ans = sol_fn(seed, inp, log)
             return ans
     else:
         def get_ans(seed):
-            p = subprocess.Popen(run_cmd.split(), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+            p = subprocess.Popen(
+                run_cmd.split(), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
             p.stdin.write(inp.encode('ascii'))
             out, _ = p.communicate()
             return out.decode('ascii')
     return get_ans
-
 
 
 # Runs scoring function and checks if score is improved.
