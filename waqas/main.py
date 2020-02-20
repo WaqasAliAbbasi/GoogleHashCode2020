@@ -15,6 +15,7 @@ def solve(ns):
             break
         ns.libraries._reset(1000)
         _, library = ns.libraries.popitem()
+        daysLeftForSignUp -= library.signUpTime
         output += "{} {}\n".format(library.libraryID, len(library.books))
         output += " ".join([str(book.selectForScan().bookID)
                             for book in library.getBooksToBeScanned(daysLeftForSignUp)]) + "\n"
