@@ -1,6 +1,7 @@
 import argparse
 import random
-from library import Library
+from library import Library, Book
+from sortedcontainers import SortedList
 from utkarsh.main import printSquare as utkarshPrintSquare
 from waqas.main import solve as waqasSolve
 from divyansh.main import printSquare as divyanshPrintSquare
@@ -26,8 +27,8 @@ def parseInput(inp):
     libraries = {}
     for i in range(numberOfLibraries):
         numberOfBooks, signUpTime, capacityOfShipping = nl(itr)
-        books = [bookID
-                 for bookID in nl(itr)]
+        books = SortedList(Book(bookID, bookScores[bookID])
+                           for bookID in nl(itr))
         libraries[i] = Library(i, numberOfBooks, signUpTime,
                                capacityOfShipping, books)
     return argparse.Namespace(numberOfDifferentBooks=numberOfDifferentBooks, numberOfLibraries=numberOfLibraries, numberOfDays=numberOfDays, bookScores=bookScores, libraries=libraries)
@@ -36,7 +37,7 @@ def parseInput(inp):
 def solve(seed, inp, log):
     random.seed(seed)
     ns = parseInput(inp)
-
+    print(ns.libraries[0].books)
     # ns.bookScores is a dictionary of bookID to bookScore
     # ns.libraries is a dictionary of libraryID to library instances (check library.py for details)
     # ns.numberOfDifferentBooks

@@ -11,5 +11,5 @@ def solve(ns):
     output = "{}\n".format(ns.numberOfLibraries)
     for library in ns.libraries.values():
         output += "{} {}\n".format(library.libraryID, len(library.books))
-        output += " ".join(map(str, library.books)) + "\n"
+        output += " ".join([str(book.bookID) for book in library.books]) + "\n"
     return output
