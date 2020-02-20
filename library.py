@@ -18,7 +18,7 @@ class Library:
             shippingDays = days - self.signUpTime
 
         booksToBeScanned = self.getBooksToBeScanned(shippingDays)
-        self.worth = sum([book.bookWorth for book in booksToBeScanned])
+        self.worth = sum([book.getWorth() for book in booksToBeScanned])
         return self.worth
 
     def getBooksToBeScanned(self, shippingDays):
