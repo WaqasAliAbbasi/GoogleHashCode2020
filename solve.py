@@ -12,9 +12,14 @@ def solve(seed, inp, log):
     random.seed(seed)
     ns = parse(inp)
 
+    # ns.bookScores is a dictionary of bookID to bookScore
+    # ns.libraries is a list of library instances (check library.py for details)
+    # ns.numberOfDifferentBooks
+    # ns.numberOfLibraries
+    # ns.numberOfDays
+
+    print(ns)
+
     # TODO: Solve the problem
-    divyanshPrintSquare(1)
-    waqasPrintSquare(2)
-    utkarshPrintSquare(3)
 
     return '0'
