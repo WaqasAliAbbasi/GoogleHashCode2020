@@ -18,9 +18,14 @@ class Library:
             shippingDays = days - self.signUpTime
 
         noOfBooksThatCanBeScanned = self.capacityOfShipping*shippingDays
+        self.sortBookList()
         booksToBeScanned = self.books[:noOfBooksThatCanBeScanned]
         worth = sum([book.bookWorth for book in booksToBeScanned])
         return worth
+
+    def sortBookList(self):
+        cbr = self.numberOfBooks ** (1/3)
+        self.books.reset(cbr)
 
     def signUpLibrary(self):
         self.isSignedUp = True
