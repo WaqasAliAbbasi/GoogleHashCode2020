@@ -17,11 +17,14 @@ class Library:
         else:
             shippingDays = days - self.signUpTime
 
-        noOfBooksThatCanBeScanned = self.capacityOfShipping*shippingDays
-        self.sortBookList()
-        booksToBeScanned = self.books[:noOfBooksThatCanBeScanned]
+        booksToBeScanned = self.getBooksToBeScanned(shippingDays)
         worth = sum([book.bookWorth for book in booksToBeScanned])
         return worth
+
+    def getBooksToBeScanned(self, shippingDays):
+        noOfBooksThatCanBeScanned = self.capacityOfShipping*shippingDays
+        self.sortBookList()
+        return self.books[:noOfBooksThatCanBeScanned]
 
     def sortBookList(self):
         cbr = self.numberOfBooks ** (1/3)
