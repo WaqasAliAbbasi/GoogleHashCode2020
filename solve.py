@@ -30,7 +30,7 @@ def parseInput(inp):
         books = SortedList(Book(bookID, bookScores[bookID])
                            for bookID in nl(itr))
         libraries[i] = Library(i, numberOfBooks, signUpTime,
-                               capacityOfShipping, books)
+                               capacityOfShipping, books, numberOfDays)
     return argparse.Namespace(numberOfDifferentBooks=numberOfDifferentBooks, numberOfLibraries=numberOfLibraries, numberOfDays=numberOfDays, bookScores=bookScores, libraries=libraries)
 
 
