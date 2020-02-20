@@ -21,9 +21,10 @@ class Library:
         self.worth = sum([book.getWorth() for book in booksToBeScanned])
         return self.worth
 
-    def getBooksToBeScanned(self, shippingDays):
+    def getBooksToBeScanned(self, shippingDays, sort=True):
         noOfBooksThatCanBeScanned = self.capacityOfShipping*shippingDays
-        self.sortBookList()
+        if sort:
+            self.sortBookList()
         return self.books[:noOfBooksThatCanBeScanned]
 
     def sortBookList(self):
