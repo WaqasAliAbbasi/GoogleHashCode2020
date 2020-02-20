@@ -8,17 +8,20 @@ def solve(ns):
     # ns.numberOfLibraries
     # ns.numberOfDays
 
-    output = "{}\n".format(ns.numberOfLibraries)
+    output = ""
+    count = 0
     daysLeftForSignUp = ns.numberOfDays
     for _ in range(ns.numberOfLibraries):
-        if daysLeftForSignUp < 0:
-            break
         ns.libraries._reset(1000)
         _, library = ns.libraries.popitem()
         daysLeftForSignUp -= library.signUpTime
-        output += "{} {}\n".format(library.libraryID, len(library.books))
+        if daysLeftForSignUp < 0:
+            break
+        count += 1
+        output += "{} {}\n".format(library.libraryID,
+                                   len(library.getBooksToBeScanned(daysLeftForSignUp)))
         output += " ".join([str(book.selectForScan().bookID)
                             for book in library.getBooksToBeScanned(daysLeftForSignUp)]) + "\n"
         for library in ns.libraries.values():
             library.setSelfWorth(daysLeftForSignUp)
-    return output
+    return "{}\n".format(count) + output
