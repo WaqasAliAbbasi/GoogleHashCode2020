@@ -8,8 +8,8 @@ def solve(ns):
     # ns.numberOfLibraries
     # ns.numberOfDays
 
-    output = ""
-    for library in ns.libraries:
+    output = "{}\n".format(ns.numberOfLibraries)
+    for library in ns.libraries.values():
         output += "{} {}\n".format(library.libraryID, len(library.books))
         output += " ".join(map(str, library.books)) + "\n"
     return output

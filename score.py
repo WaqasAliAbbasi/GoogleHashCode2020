@@ -1,4 +1,5 @@
 import argparse
+from solve import parseInput
 
 
 def ni(itr):
@@ -11,17 +12,27 @@ def nl(itr):
     return [int(v) for v in next(itr).split()]
 
 
-def parse(inp):
-    return 'a'
-
 # inp: the input file as a single string
 # out: the answer file produced by your solver, as a single string
 # return the score of the output as an integer
 
 
 def score(inp, out):
-    ns = parse(inp)
+    ns = parseInput(inp)
     itr = (line for line in out.split('\n'))
-    print(nl(itr))
-
+    numberOfLibrariesSignedUp = ni(itr)
+    score = 0
+    print(ns.numberOfDays)
+    daysLeftForSignUp = ns.numberOfDays
+    scannedBooks = set()
+    for _ in range(numberOfLibrariesSignedUp):
+        libraryID, totalBooks = nl(itr)
+        library = ns.libraries[libraryID]
+        print(library.signUpTime)
+        daysLeftForSignUp -= library.signUpTime
+        print(daysLeftForSignUp)
+        print(library.capacityOfShipping)
+        totalBooksForSigning = daysLeftForSignUp * library.capacityOfShipping
+        for bookID in nl(itr)[:min(totalBooks, totalBooksForSigning)]:
+            scannedBooks.add(bookID)
     return 0
