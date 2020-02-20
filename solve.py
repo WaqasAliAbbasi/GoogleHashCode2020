@@ -37,7 +37,6 @@ def parseInput(inp):
 def solve(seed, inp, log):
     random.seed(seed)
     ns = parseInput(inp)
-    print(ns.libraries[0].books)
     # ns.bookScores is a dictionary of bookID to bookScore
     # ns.libraries is a dictionary of libraryID to library instances (check library.py for details)
     # ns.numberOfDifferentBooks
