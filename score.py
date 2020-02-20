@@ -22,17 +22,15 @@ def score(inp, out):
     itr = (line for line in out.split('\n'))
     numberOfLibrariesSignedUp = ni(itr)
     score = 0
-    print(ns.numberOfDays)
     daysLeftForSignUp = ns.numberOfDays
-    scannedBooks = set()
+    scannedBooks = {}
     for _ in range(numberOfLibrariesSignedUp):
         libraryID, totalBooks = nl(itr)
         library = ns.libraries[libraryID]
-        print(library.signUpTime)
         daysLeftForSignUp -= library.signUpTime
-        print(daysLeftForSignUp)
-        print(library.capacityOfShipping)
         totalBooksForSigning = daysLeftForSignUp * library.capacityOfShipping
         for bookID in nl(itr)[:min(totalBooks, totalBooksForSigning)]:
-            scannedBooks.add(bookID)
-    return 0
+            if bookID not in scannedBooks:
+                score += ns.bookScores[bookID]
+                scannedBooks[bookID] = True
+    return score
