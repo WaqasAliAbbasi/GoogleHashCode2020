@@ -13,21 +13,7 @@ def nl(itr):
 
 
 def parse(inp):
-    lines = inp.split('\n')
-    numberOfDifferentBooks, numberOfLibraries, numberOfDays = map(
-        int, lines[0].split())
-    bookScores = {bookID: int(bookScore)
-                  for bookID, bookScore in enumerate(lines[1].split(' '))}
-    libraries = []
-    for i in range(numberOfLibraries):
-        line_number = 1 + i*2 + 1
-        numberOfBooks, signUpTime, capacityOfShipping = map(
-            int, lines[line_number].split())
-        books = [int(bookID)
-                 for bookID in lines[line_number + 1].split(' ')]
-        libraries.append(Library(i, numberOfBooks, signUpTime,
-                                 capacityOfShipping, books))
-    return argparse.Namespace(numberOfDifferentBooks=numberOfDifferentBooks, numberOfLibraries=numberOfLibraries, numberOfDays=numberOfDays, bookScores=bookScores, libraries=libraries)
+    return 'a'
 
 # inp: the input file as a single string
 # out: the answer file produced by your solver, as a single string
@@ -37,6 +23,6 @@ def parse(inp):
 def score(inp, out):
     ns = parse(inp)
     itr = (line for line in out.split('\n'))
-    # TODO: implement
+    print(nl(itr))
 
     return 0
