@@ -12,8 +12,13 @@ def solve(ns):
     count = 0
     daysLeftForSignUp = ns.numberOfDays
     for _ in range(ns.numberOfLibraries):
+<<<<<<< HEAD
         # ns.libraries._reset(1000)
         _, library = ns.libraries.popitem()
+=======
+        ns.libraries._reset(1000)
+        library = ns.libraries.pop()
+>>>>>>> fixes sorting issues
         daysLeftForSignUp -= library.signUpTime
         if daysLeftForSignUp < 0:
             break
@@ -24,6 +29,11 @@ def solve(ns):
                                    len(library.getBooksToBeScanned(daysLeftForSignUp, sort=False)))
         output += " ".join([str(book.selectForScan().bookID)
                             for book in library.getBooksToBeScanned(daysLeftForSignUp)]) + "\n"
+<<<<<<< HEAD
         # for library in ns.libraries.values():
         #     library.setSelfWorth(daysLeftForSignUp)
+=======
+        for library in ns.libraries:
+            library.setSelfWorth(daysLeftForSignUp)
+>>>>>>> fixes sorting issues
     return "{}\n".format(count) + output

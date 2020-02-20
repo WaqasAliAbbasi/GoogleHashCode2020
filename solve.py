@@ -24,14 +24,14 @@ def parseInput(inp):
     numberOfDifferentBooks, numberOfLibraries, numberOfDays = nl(itr)
     books = {bookID: Book(bookID, bookScore)
              for bookID, bookScore in enumerate(nl(itr))}
-    libraries = SortedDict()
+    libraries = SortedList()
     for i in range(numberOfLibraries):
         numberOfBooks, signUpTime, capacityOfShipping = nl(itr)
         line = nl(itr)
         libraryBooks = SortedList(books[bookID]
                                   for bookID in line)
-        libraries[i] = Library(i, numberOfBooks, signUpTime,
-                               capacityOfShipping, libraryBooks, numberOfDays)
+        libraries.add(Library(i, numberOfBooks, signUpTime,
+                              capacityOfShipping, libraryBooks, numberOfDays))
     return argparse.Namespace(numberOfDifferentBooks=numberOfDifferentBooks, numberOfLibraries=numberOfLibraries, numberOfDays=numberOfDays, books=books, libraries=libraries)
 
 
