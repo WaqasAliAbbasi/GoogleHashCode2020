@@ -28,6 +28,8 @@ def score(inp, out):
         libraryID, totalBooks = nl(itr)
         library = ns.libraries[libraryID]
         daysLeftForSignUp -= library.signUpTime
+        if daysLeftForSignUp <= 0:
+            break
         totalBooksForSigning = daysLeftForSignUp * library.capacityOfShipping
         for bookID in nl(itr)[:min(totalBooks, totalBooksForSigning)]:
             if bookID not in scannedBooks:
