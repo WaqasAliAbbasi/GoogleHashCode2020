@@ -1,7 +1,7 @@
 import argparse
 import random
 from library import Library, Book
-from sortedcontainers import SortedList
+from sortedcontainers import SortedList, SortedDict
 from utkarsh.main import printSquare as utkarshPrintSquare
 from waqas.main import solve as waqasSolve
 from divyansh.main import printSquare as divyanshPrintSquare
@@ -24,7 +24,7 @@ def parseInput(inp):
     numberOfDifferentBooks, numberOfLibraries, numberOfDays = nl(itr)
     books = {bookID: Book(bookID, bookScore)
              for bookID, bookScore in enumerate(nl(itr))}
-    libraries = {}
+    libraries = SortedDict()
     for i in range(numberOfLibraries):
         numberOfBooks, signUpTime, capacityOfShipping = nl(itr)
         line = nl(itr)
