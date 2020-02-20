@@ -25,9 +25,20 @@ class Book:
     def __init__(self, bookID, bookWorth):
         self.bookID = bookID
         self.bookWorth = bookWorth
+        self.scanned = False
+
+    def selectForScan(self):
+        self.scanned = True
+        return self
+
+    def getWorth(self):
+        if self.scanned:
+            return 0
+        else:
+            return self.bookWorth
 
     def __lt__(self, other):
-        return self.bookWorth > other.bookWorth
+        return self.getWorth() > other.getWorth()
 
     def __repr__(self):
-        return "(ID: {}, Worth: {})".format(self.bookID, self.bookWorth)
+        return "(ID: {}, Worth: {}, Scanned: {})".format(self.bookID, self.getWorth(), self.scanned)

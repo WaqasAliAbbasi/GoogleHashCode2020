@@ -33,6 +33,6 @@ def score(inp, out):
         totalBooksForSigning = daysLeftForSignUp * library.capacityOfShipping
         for bookID in nl(itr)[:min(totalBooks, totalBooksForSigning)]:
             if bookID not in scannedBooks:
-                score += ns.bookScores[bookID]
+                score += ns.books[bookID].bookWorth
                 scannedBooks[bookID] = True
     return score

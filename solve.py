@@ -22,16 +22,17 @@ def nl(itr):
 def parseInput(inp):
     itr = (line for line in inp.split('\n'))
     numberOfDifferentBooks, numberOfLibraries, numberOfDays = nl(itr)
-    bookScores = {bookID: int(bookScore)
-                  for bookID, bookScore in enumerate(nl(itr))}
+    books = {bookID: Book(bookID, bookScore)
+             for bookID, bookScore in enumerate(nl(itr))}
     libraries = {}
     for i in range(numberOfLibraries):
         numberOfBooks, signUpTime, capacityOfShipping = nl(itr)
-        books = SortedList(Book(bookID, bookScores[bookID])
-                           for bookID in nl(itr))
+        line = nl(itr)
+        libraryBooks = SortedList(books[bookID]
+                                  for bookID in line)
         libraries[i] = Library(i, numberOfBooks, signUpTime,
-                               capacityOfShipping, books, numberOfDays)
-    return argparse.Namespace(numberOfDifferentBooks=numberOfDifferentBooks, numberOfLibraries=numberOfLibraries, numberOfDays=numberOfDays, bookScores=bookScores, libraries=libraries)
+                               capacityOfShipping, libraryBooks, numberOfDays)
+    return argparse.Namespace(numberOfDifferentBooks=numberOfDifferentBooks, numberOfLibraries=numberOfLibraries, numberOfDays=numberOfDays, books=books, libraries=libraries)
 
 
 def solve(seed, inp, log):
