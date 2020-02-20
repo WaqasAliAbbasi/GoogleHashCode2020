@@ -6,3 +6,4 @@ ans/
 *.swp
 submission/
 main.cfg
+.DS_Store
