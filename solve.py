@@ -2,7 +2,7 @@ import argparse
 import random
 from score import parse
 from utkarsh.main import printSquare as utkarshPrintSquare
-from waqas.main import printSquare as waqasPrintSquare
+from waqas.main import solve as waqasSolve
 from divyansh.main import printSquare as divyanshPrintSquare
 # inp is an input file as a single string
 # return your output as a string
@@ -18,7 +18,7 @@ def solve(seed, inp, log):
     # ns.numberOfLibraries
     # ns.numberOfDays
 
-    print(ns)
+    waqasSolve(ns)
 
     # TODO: Solve the problem
 

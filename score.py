@@ -25,7 +25,7 @@ def parse(inp):
             int, lines[line_number].split())
         books = [int(bookID)
                  for bookID in lines[line_number + 1].split(' ')]
-        libraries.append(Library(numberOfBooks, signUpTime,
+        libraries.append(Library(i, numberOfBooks, signUpTime,
                                  capacityOfShipping, books))
     return argparse.Namespace(numberOfDifferentBooks=numberOfDifferentBooks, numberOfLibraries=numberOfLibraries, numberOfDays=numberOfDays, bookScores=bookScores, libraries=libraries)
 
