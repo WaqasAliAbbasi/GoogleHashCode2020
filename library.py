@@ -34,7 +34,7 @@ class Library:
         self.isSignedUp = True
 
     def __repr__(self):
-        return "(ID: {}, Number of Books: {}, Sign Up Time: {}, Capacity of Shipping: {}, Total Books: {})".format(self.libraryID, self.numberOfBooks, self.signUpTime, self.capacityOfShipping, len(self.books))
+        return "(ID: {}, Worth: {}, Number of Books: {}, Sign Up Time: {}, Capacity of Shipping: {}, Total Books: {})".format(self.libraryID, self.worth, self.numberOfBooks, self.signUpTime, self.capacityOfShipping, len(self.books))
 
 
 class Book:
