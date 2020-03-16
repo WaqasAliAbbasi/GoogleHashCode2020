@@ -9,7 +9,15 @@ class Library:
         self.worth = self.setSelfWorth(days)
 
     def __lt__(self, other):
-        return self.worth > other.worth
+        if self.numberOfBooks < other.numberOfBooks:
+            return True
+        elif self.numberOfBooks == other.numberOfBooks:
+            if self.signUpTime > other.signUpTime:
+                return True
+            elif self.signUpTime == other.signUpTime:
+                if self.capacityOfShipping > other.capacityOfShipping:
+                    return True
+        return False
 
     def setSelfWorth(self, days):
         if self.isSignedUp:

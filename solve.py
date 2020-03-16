@@ -4,7 +4,6 @@ from library import Library, Book
 from sortedcontainers import SortedList, SortedDict
 from utkarsh.main import printSquare as utkarshPrintSquare
 from waqas.main import solve as waqasSolve
-from divyansh.main import printSquare as divyanshPrintSquare
 # inp is an input file as a single string
 # return your output as a string
 
